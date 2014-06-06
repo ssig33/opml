@@ -4,11 +4,11 @@ require 'opml'
 shared_examples "a sample OPML file" do
 
   it "should have the owner of the document" do
-    @opml.owner_name.should == "Dave Winer"
+    expect(@opml.owner_name).to eq("Dave Winer")
   end
 
   it "should have the email address of the owner of the document" do
-    @opml.owner_email.should == "dave@userland.com"
+    expect(@opml.owner_email).to eq("dave@userland.com")
   end
 
 end
@@ -16,11 +16,11 @@ end
 shared_examples "an empty OPML file" do
 
   it "should have no title" do
-    @opml.title.should be_nil
+    expect(@opml.title).to be_nil
   end
 
   it "should have no outlines" do
-    @opml.outlines.size.should == 0
+    expect(@opml.outlines.size).to eq(0)
   end
 
 end
@@ -36,26 +36,26 @@ describe Opml, "playlist" do
   it_should_behave_like "a sample OPML file"
 
   it "should have a title of the document" do
-    @opml.title.should == "playlist.xml"
+    expect(@opml.title).to eq("playlist.xml")
   end
 
   it "should have a date-time, indicating when the document was created" do
-    @opml.date_created.should == Time.parse("Thu, 27 Jul 2000 03:24:18 GMT")
+    expect(@opml.date_created).to eq(Time.parse("Thu, 27 Jul 2000 03:24:18 GMT"))
   end
 
   it "should have a date-time, indicating when the document was last modified" do
-    @opml.date_modified.should == Time.parse("Fri, 15 Sep 2000 09:01:23 GMT")
+    expect(@opml.date_modified).to eq(Time.parse("Fri, 15 Sep 2000 09:01:23 GMT"))
   end
 
   it "should have outlines" do
-    @opml.outlines.size.should == 3
-    @opml.outlines[0].outlines.size.should == 1
-    @opml.outlines[1].outlines.size.should == 13
-    @opml.outlines[2].outlines.size.should == 7
+    expect(@opml.outlines.size).to eq(3)
+    expect(@opml.outlines[0].outlines.size).to eq(1)
+    expect(@opml.outlines[1].outlines.size).to eq(13)
+    expect(@opml.outlines[2].outlines.size).to eq(7)
   end
 
   it "should return flattened outlines" do
-    @opml.flatten.size.should == 24
+    expect(@opml.flatten.size).to eq(24)
   end
 
 end
@@ -70,26 +70,26 @@ describe Opml, "presentation" do
   it_should_behave_like "a sample OPML file"
 
   it "should have a title of the document" do
-    @opml.title.should == "presentation.xml"
+    expect(@opml.title).to eq("presentation.xml")
   end
 
   it "should have a date-time, indicating when the document was created" do
-    @opml.date_created.should == Time.parse("Thu, 27 Jul 2000 01:35:52 GMT")
+    expect(@opml.date_created).to eq(Time.parse("Thu, 27 Jul 2000 01:35:52 GMT"))
   end
 
   it "should have a date-time, indicating when the document was last modified" do
-    @opml.date_modified.should == Time.parse("Fri, 15 Sep 2000 09:05:37 GMT")
+    expect(@opml.date_modified).to eq(Time.parse("Fri, 15 Sep 2000 09:05:37 GMT"))
   end
 
   it "should have outlines" do
-    @opml.outlines.size.should == 17
-    @opml.outlines[0].outlines.size.should == 2
-    @opml.outlines[1].outlines.size.should == 5
-    @opml.outlines[2].outlines.size.should == 4
+    expect(@opml.outlines.size).to eq(17)
+    expect(@opml.outlines[0].outlines.size).to eq(2)
+    expect(@opml.outlines[1].outlines.size).to eq(5)
+    expect(@opml.outlines[2].outlines.size).to eq(4)
   end
 
   it "should return flattened outlines" do
-    @opml.flatten.size.should == 91
+    expect(@opml.flatten.size).to eq(91)
   end
 
 end
@@ -104,26 +104,26 @@ describe Opml, "specification" do
   it_should_behave_like "a sample OPML file"
 
   it "should have a title of the document" do
-    @opml.title.should == "specification.xml"
+    expect(@opml.title).to eq("specification.xml")
   end
 
   it "should have a date-time, indicating when the document was created" do
-    @opml.date_created.should == Time.parse("Thu, 27 Jul 2000 01:20:06 GMT")
+    expect(@opml.date_created).to eq(Time.parse("Thu, 27 Jul 2000 01:20:06 GMT"))
   end
 
   it "should have a date-time, indicating when the document was last modified" do
-    @opml.date_modified.should == Time.parse("Fri, 15 Sep 2000 09:04:03 GMT")
+    expect(@opml.date_modified).to eq(Time.parse("Fri, 15 Sep 2000 09:04:03 GMT"))
   end
 
   it "should have outlines" do
-    @opml.outlines.size.should == 4
-    @opml.outlines[0].outlines.size.should == 4
-    @opml.outlines[1].outlines.size.should == 4
-    @opml.outlines[2].outlines.size.should == 4
+    expect(@opml.outlines.size).to eq(4)
+    expect(@opml.outlines[0].outlines.size).to eq(4)
+    expect(@opml.outlines[1].outlines.size).to eq(4)
+    expect(@opml.outlines[2].outlines.size).to eq(4)
   end
 
   it "should return flattened outlines" do
-    @opml.flatten.size.should == 17
+    expect(@opml.flatten.size).to eq(17)
   end
 
 end
@@ -176,23 +176,23 @@ describe Opml::Outline, "in playlist" do
   end
 
   it "should return all attributes" do
-    @outline.attributes.should == {"text" => "The Last Napster Sunday?"}
+    expect(@outline.attributes).to eq({"text" => "The Last Napster Sunday?"})
   end
 
   it "should return text attribute" do
-    @outline.text.should == "The Last Napster Sunday?"
+    expect(@outline.text).to eq("The Last Napster Sunday?")
   end
 
   it "should respond to text attribute" do
-    @outline.respond_to?(:text).should be_true
+    expect(@outline.respond_to?(:text)).to eq(true)
   end
 
   it "should return text when coerce into a string" do
-    @outline.to_s.should == "The Last Napster Sunday?"
+    expect(@outline.to_s).to eq("The Last Napster Sunday?")
   end
 
   it "should return flattened child outlines" do
-    @outline.flatten.map(&:to_s).should == [
+    expect(@outline.flatten.map(&:to_s)).to eq([
       "The Last Napster Sunday?", 
       "Heart of Glass.mp3", 
       "Manic Monday.mp3", 
@@ -207,7 +207,7 @@ describe Opml::Outline, "in playlist" do
       "Taxi.Mp3", 
       "Thick As A Brick.mp3", 
       "Riding With the King.mp3"
-    ]
+    ])
   end
 
 end
