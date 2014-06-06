@@ -5,4 +5,4 @@ source "https://rubygems.org"
 gem "appraisal"
 gem "activesupport", ">= 3.2", "< 4"
 
-gemspec :path=>"../"
+gemspec :path => "../"
