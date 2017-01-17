@@ -21,7 +21,7 @@ class Opml
       @to_s ||= attributes['text'] || super
     end
 
-    def respond_to?(method)
+    def respond_to_missing?(method, include_private)
       return true if attributes[method.to_s]
       super
     end
