@@ -1,9 +1,20 @@
 rvm:
-- 2.2.6
-- 2.3.3
-- 2.4.0
+  - 2.2.6
+  - 2.3.3
+  - 2.4.0
 gemfile:
-- gemfiles/activesupport_3_2.gemfile
-- gemfiles/activesupport_4_0.gemfile
-- gemfiles/activesupport_4_1.gemfile
-- gemfiles/activesupport_4_2.gemfile
+  - gemfiles/activesupport_3_2.gemfile
+  - gemfiles/activesupport_4_0.gemfile
+  - gemfiles/activesupport_4_1.gemfile
+  - gemfiles/activesupport_4_2.gemfile
+matrix:
+  exclude:
+    # activesupport < 5.0 does not support Ruby >= 2.4
+    - rvm: 2.4.0
+      gemfile: gemfiles/activesupport_3_2.gemfile
+    - rvm: 2.4.0
+      gemfile: gemfiles/activesupport_4_0.gemfile
+    - rvm: 2.4.0
+      gemfile: gemfiles/activesupport_4_1.gemfile
+    - rvm: 2.4.0
+      gemfile: gemfiles/activesupport_4_2.gemfile
